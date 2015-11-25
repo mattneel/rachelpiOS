@@ -22,7 +22,7 @@ def check_arguments():
 def cmd(c):
 	new_env = os.environ.copy()
 	new_env["DEBIAN_FRONTEND"] = "noninteractive"
-	result = subprocess.Popen(c, shell = True, env = new_env, stdin=PIPE)
+	result = subprocess.Popen(c, shell = True, env = new_env)
 	try:
 		result.communicate()
 	except KeyboardInterrupt:
