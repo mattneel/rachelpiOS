@@ -136,9 +136,9 @@ if not is_vagrant():
 	if kalite == "y":
 		install_kalite() or die("Unable to install KA-Lite.")
 	if kiwix == "y":
-		install_kiwix() or die("Unable to install KiwiX.")
+#		install_kiwix() or die("Unable to install KiwiX.")
 else:
 	install_kalite() or die("Unable to install KA-Lite.")
-	install_kiwix() or die("Unable to install KiwiX.")
+#	install_kiwix() or die("Unable to install KiwiX.")
 
 print "RACHEL has been successfully installed. It can be accessed at: http://10.10.10.10/"
