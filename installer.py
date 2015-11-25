@@ -13,7 +13,7 @@ def install_kalite():
 	#sudo("apt-get install ka-lite -y") or die("Unable to install ka-lite package.")
 	#sudo("kalite manage setup") or die("Unable to complete KA-Lite initial configuration.")
 	sudo("apt-get install -y python-pip") or die("Unable to install pip.")
-	sudo("pip install --upgrade pip") or die("Unable to upgrade pip.")
+#	sudo("pip install --upgrade pip") or die("Unable to upgrade pip.")
 	sudo("pip install ka-lite-static") or die("Unable to install KA-Lite")
 
 def install_kiwix():
