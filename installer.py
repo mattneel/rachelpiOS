@@ -53,12 +53,7 @@ def wifi_present():
 	return exists("/sys/class/net/wlan0")
 
 def basedir():
-	basedir = ""
-	if is_vagrant():
-		basedir = "/vagrant"
-	else:
-		basedir = os.path.dirname(os.path.realpath(__file__))
-	return basedir
+	return "/tmp/rachel_installer"
 	
 def cp(s, d):
 	return sudo("cp %s/%s %s" % (basedir(), s, d))
