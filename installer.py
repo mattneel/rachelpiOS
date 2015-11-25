@@ -96,7 +96,7 @@ if wifi_present():
 	sudo("service udhcpd start") or die("Unable to start udhcpd service.")
 	sudo("update-rc.d hostapd enable") or die("Unable to enable hostapd on boot.")
 	sudo("update-rc.d udhcpd enable") or die("Unable to enable UDHCPd on boot.")
-	sudo("ifdown eth0 && ifdown wlan0 && ifup eth0 && ifup wlan0") or die("Unable to restart network interfaces.")
+	#sudo("ifdown eth0 && ifdown wlan0 && ifup eth0 && ifup wlan0") or die("Unable to restart network interfaces.")
 
 # Setup LAN
 cp("files/interfaces", "/etc/network/interfaces") or die("Unable to copy network interface configuration (interfaces)")
