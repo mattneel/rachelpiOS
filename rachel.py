@@ -15,7 +15,7 @@ def check_arguments():
 	
 	parser.add_argument('-x', '--kiwix', default = False)
 	args = parser.parse_args()
-	if not args.kiwix
+	if not args.kiwix:
 		return False
 	return True
 
