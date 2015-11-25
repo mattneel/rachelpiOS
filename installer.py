@@ -106,7 +106,7 @@ cp("files/gdbcommands", "/etc/samba/gdbcommands") or die("Unable to copy samba c
 
 # Install web frontend
 sudo("rm -fr /var/www/html") or die("Unable to delete existing default web application (/var/www/html).")
-sudo("git clone https://github.com/rachelproject/contentshell /var/www/html") or die("Unable to download RACHEL web application.")
+sudo("git clone --depth 1 https://github.com/rachelproject/contentshell /var/www/html") or die("Unable to download RACHEL web application.")
 sudo("chown -R www-data.www-data /var/www/html") or die("Unable to set permissions on RACHEL web application (/var/www/html).")
 
 # Extra wifi driver configuration
