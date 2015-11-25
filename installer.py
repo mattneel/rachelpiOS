@@ -17,9 +17,11 @@ def install_kiwix():
 	return
 
 def check_arguments():
+	old_stdin = sys.stdin
 	sys.stdin = open('/dev/tty')
 	kalite = raw_input("Would you like to install KA-Lite? [Y/n]: ").lower() or "y"
 	kiwix = raw_input("Would you like to install KiwiX? [y/N]: ").lower() or "n"
+	sys.stdin = old_stdin
 	return [kalite, kiwix]
 
 def exists(p):
