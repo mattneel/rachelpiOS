@@ -29,15 +29,21 @@ def is_vagrant():
 def wifi_present():
 	if is_vagrant():
 		return False
-	return os.path.isfile("/proc/sys/class/net/wlan0")
+	return os.path.isfile("/sys/class/net/wlan0")
 
-def cp(s, d):
+def basedir():
 	basedir = ""
 	if is_vagrant():
-		basedir = "/vagrant/"
+		basedir = "/vagrant"
 	else:
 		basedir = os.path.dirname(os.path.realpath(__file__))
-	return sudo("cp %s%s %s" % (basedir, s, d))
+	return basedir
+	
+def cp(s, d):
+	return sudo("cp %s/%s %s" % (basedir(), s, d))
+
+# Chdir
+os.chdir(basedir())
 
 # Update and upgrade OS
 sudo("apt-get update -y") or die("Unable to update.")
