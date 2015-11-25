@@ -54,6 +54,8 @@ def basedir():
 def cp(s, d):
 	return sudo("cp %s/%s %s" % (basedir(), s, d))
 
+[kalite, kiwix] = check_arguments()
+
 sudo("apt-get install -y git") or die("Unable to install Git.")
 
 # Clone the repo.
@@ -132,7 +134,6 @@ if wifi_present():
 	cp("files/hostapd_realtek.conf", "/etc/hostapd/hostapd.conf.realtek") or die("Unable to copy realtek hostapd configuration.")
 
 if not is_vagrant():
-	[kalite, kiwix] = check_arguments()
 	if kalite == "y":
 		install_kalite() or die("Unable to install KA-Lite.")
 #	if kiwix == "y":
