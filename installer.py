@@ -10,6 +10,9 @@ def install_kalite():
 	sudo("apt-get update -y") or die("Unable to update apt repository cache.")
 	sudo("apt-get install ka-lite -y") or die("Unable to install ka-lite package.")
 
+def install_kiwix():
+	return
+
 def askforextras():
 	extra = raw_input("Install KiwiX, KA-Lite, Both, or Neither? [Both]: ").lower() or "both"
 	if extra == "both":
