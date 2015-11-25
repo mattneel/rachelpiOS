@@ -10,7 +10,7 @@ import urllib
 def install_kalite():
 	sudo("apt-get install -y python-pip") or die("Unable to install pip.")
 	sudo("pip install ka-lite-static") or die("Unable to install KA-Lite")
-	sudo("printf '\n\nrachel\nrachel\nrachel\nrachel\nyes\nyes\n' | kalite manage setup") or die("Unable to setup KA-Lite database.")
+	sudo("kalite manage setup") or die("Unable to setup KA-Lite database.")
 	return True
 
 def install_kiwix():
@@ -20,8 +20,6 @@ def check_arguments():
 	sys.stdin = open('/dev/tty')
 	kalite = raw_input("Would you like to install KA-Lite? [Y/n]: ").lower() or "y"
 	kiwix = raw_input("Would you like to install KiwiX? [y/N]: ").lower() or "n"
-	sys.stdin.close()
-	os.close(0)
 	return [kalite, kiwix]
 
 def exists(p):
