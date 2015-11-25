@@ -40,7 +40,7 @@ def basedir():
 	return basedir
 	
 def cp(s, d):
-	return sudo("cp %s\/%s %s" % (basedir(), s, d))
+	return sudo("cp %s/%s %s" % (basedir(), s, d))
 
 # Chdir
 os.chdir(basedir())
