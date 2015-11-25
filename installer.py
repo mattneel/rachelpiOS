@@ -42,6 +42,9 @@ def basedir():
 def cp(s, d):
 	return sudo("cp %s/%s %s" % (basedir(), s, d))
 
+# Chdir
+os.chdir(basedir())
+
 # Update and upgrade OS
 sudo("apt-get update -y") or die("Unable to update.")
 sudo("apt-get dist-upgrade -y") or die("Unable to upgrade Raspbian.")
