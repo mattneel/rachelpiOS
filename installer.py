@@ -10,7 +10,7 @@ import urllib
 def install_kalite():
 	sudo("apt-get install -y python-pip") or die("Unable to install pip.")
 	sudo("pip install ka-lite-static") or die("Unable to install KA-Lite")
-	sudo("printf 'rachel\nrachel\n' | sudo kalite manage setup") or die("Unable to setup KA-Lite database.")
+	sudo("printf 'rachel\nrachel\n\n\n' | sudo kalite manage setup") or die("Unable to setup KA-Lite database.")
 	return True
 
 def install_kiwix():
