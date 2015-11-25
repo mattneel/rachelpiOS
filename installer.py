@@ -9,6 +9,9 @@ import shutil
 def check_arguments():
 	return
 
+def exists(p):
+	return os.path.isfile(p) or os.path.isdir(p)
+
 def cmd(c):
 	new_env = os.environ.copy()
 	new_env["DEBIAN_FRONTEND"] = "noninteractive"
@@ -29,7 +32,7 @@ def is_vagrant():
 def wifi_present():
 	if is_vagrant():
 		return False
-	return os.path.isfile("/sys/class/net/wlan0")
+	return exists("/sys/class/net/wlan0")
 
 def basedir():
 	basedir = ""
