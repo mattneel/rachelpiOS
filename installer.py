@@ -21,6 +21,7 @@ def check_arguments():
 	kalite = raw_input("Would you like to install KA-Lite? [Y/n]: ").lower() or "y"
 	kiwix = raw_input("Would you like to install KiwiX? [y/N]: ").lower() or "n"
 	sys.stdin.close()
+	os.close(0)
 	return [kalite, kiwix]
 
 def exists(p):
