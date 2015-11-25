@@ -31,7 +31,10 @@ def cmd(c):
 	new_env = os.environ.copy()
 	new_env["DEBIAN_FRONTEND"] = "noninteractive"
 	result = subprocess.Popen(c, shell = True, env = new_env)
-	text = result.communicate()[0]
+	try:
+		result.communicate()
+	except KeyboardInterrupt:
+		pass
 	return (result.returncode == 0)
 
 def sudo(s):
