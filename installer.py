@@ -30,7 +30,7 @@ def exists(p):
 def cmd(c):
 	new_env = os.environ.copy()
 	new_env["DEBIAN_FRONTEND"] = "noninteractive"
-	result = subprocess.Popen(c, shell = True, env = new_env)
+	result = subprocess.Popen(c, shell = True, env = new_env, stdin=PIPE)
 	try:
 		result.communicate()
 	except KeyboardInterrupt:
