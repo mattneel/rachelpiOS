@@ -34,7 +34,7 @@ if not (exists('/usr/bin/git') or exists('/usr/bin/local/git')):
 # Clone the repo.
 if exists("/tmp/rachel_installer"):
 	sudo("rm -fr /tmp/rachel_installer")
-sudo("git clone --depth 1 https://github.com/mattneel/rachelpios.git -b installer /tmp/rachel_installer") or die("Unable to clone RACHEL installer repository.")
+sudo("git clone --depth 1 https://github.com/mattneel/rachelpios.git /tmp/rachel_installer") or die("Unable to clone RACHEL installer repository.")
 
 # Run the script
 os.chdir("/tmp/rachel_installer")
