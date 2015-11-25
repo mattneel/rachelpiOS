@@ -135,7 +135,7 @@ if not is_vagrant():
 	[kalite, kiwix] = check_arguments()
 	if kalite == "y":
 		install_kalite() or die("Unable to install KA-Lite.")
-	if kiwix == "y":
+#	if kiwix == "y":
 #		install_kiwix() or die("Unable to install KiwiX.")
 else:
 	install_kalite() or die("Unable to install KA-Lite.")
