@@ -5,6 +5,7 @@ import os
 import subprocess
 import argparse
 import shutil
+import urllib
 
 def install_kalite():
 	sudo("apt-get install -y python-pip") or die("Unable to install pip.")
