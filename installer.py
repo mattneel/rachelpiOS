@@ -9,7 +9,6 @@ import shutil
 def install_kalite():
 	sudo("apt-get install -y python-pip") or die("Unable to install pip.")
 	sudo("pip install ka-lite-static") or die("Unable to install KA-Lite")
-	sudo("kalite manage setup") or die("Unable to complete KA-Lite initial configuration.")
 	return True
 
 def install_kiwix():
