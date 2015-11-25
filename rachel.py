@@ -36,14 +36,6 @@ def die(d):
 	print d
 	sys.exit(1)
 
-# Update and upgrade OS
-if not (exists('/usr/bin/git') and exists('/usr/bin/local/git')):
-	sudo("apt-get install -y git") or die("Unable to install Git.")
-
-# Clone the repo.
-if exists("/tmp/rachel_installer"):
-	sudo("rm -fr /tmp/rachel_installer")
-sudo("git clone --depth 1 https://github.com/mattneel/rachelpios.git /tmp/rachel_installer") or die("Unable to clone RACHEL installer repository.")
 
 # Run the script
 os.chdir("/tmp/rachel_installer")
