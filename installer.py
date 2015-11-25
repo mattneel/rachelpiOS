@@ -7,7 +7,7 @@ import argparse
 import shutil
 
 def install_kalite():
-	sudo("apt-get install -y python-software-properties") or die("Unable to install python-software-properties.")
+	sudo("apt-get install -y software-properties-common") or die("Unable to install python-software-properties.")
 	sudo("add-apt-repository -y ppa:learningequality/ka-lite") or die("Unable to add the KA-Lite repository.")
 	sudo("apt-get update -y") or die("Unable to update apt repository cache.")
 	sudo("apt-get install ka-lite -y") or die("Unable to install ka-lite package.")
