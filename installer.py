@@ -18,11 +18,11 @@ def askforextras():
 	if extra == "both":
 		install_kalite()
 		install_kiwix()
-	else if extra == "kiwix":
+	elif extra == "kiwix":
 		install_kiwix()
-	else if extra == "ka-lite":
+	elif extra == "ka-lite":
 		install_kalite()
-	else if extra == "neither":
+	elif extra == "neither":
 		return
 	return
 
