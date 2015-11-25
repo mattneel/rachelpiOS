@@ -28,7 +28,7 @@ def die(d):
 	sys.exit(1)
 
 # Update and upgrade OS
-if not (exists('/usr/bin/git') or exists('/usr/bin/local/git')):
+if not (exists('/usr/bin/git') and exists('/usr/bin/local/git')):
 	sudo("apt-get install -y git") or die("Unable to install Git.")
 
 # Clone the repo.
