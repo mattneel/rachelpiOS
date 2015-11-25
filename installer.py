@@ -9,7 +9,7 @@ def install_kalite():
 	sudo("add-apt-repository -y ppa:learningequality/ka-lite") or die("Unable to add the KA-Lite repository.")
 	sudo("apt-get update -y") or die("Unable to update apt repository cache.")
 	sudo("apt-get install ka-lite -y") or die("Unable to install ka-lite package.")
-
+	sudo("kalite manage setup") or die("Unable to complete KA-Lite initial configuration.")
 def install_kiwix():
 	return
 
