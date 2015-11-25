@@ -3,6 +3,7 @@
 import sys
 import os
 import subprocess
+import argparse
 import shutil
 
 def install_kalite():
@@ -10,21 +11,18 @@ def install_kalite():
 	sudo("apt-get update -y") or die("Unable to update apt repository cache.")
 	sudo("apt-get install ka-lite -y") or die("Unable to install ka-lite package.")
 	sudo("kalite manage setup") or die("Unable to complete KA-Lite initial configuration.")
+
 def install_kiwix():
 	return
 
-def askforextras():
-	extra = raw_input("Install KiwiX, KA-Lite, Both, or Neither? [Both]: ").lower() or "both"
-	if extra == "both":
-		install_kalite()
-		install_kiwix()
-	elif extra == "kiwix":
-		install_kiwix()
-	elif extra == "ka-lite":
-		install_kalite()
-	elif extra == "neither":
-		return
-	return
+def check_arguments():
+	parser = argparse.ArgumentParser()
+	
+	parser.add_argument('-x', '--kiwix', default = False)
+	args = parser.parse_args()
+	if not args.kiwix
+		return False
+	return True
 
 def exists(p):
 	return os.path.isfile(p) or os.path.isdir(p)
@@ -132,5 +130,7 @@ if wifi_present():
 	cp("files/hostapd_realtek.conf", "/etc/hostapd/hostapd.conf.realtek") or die("Unable to copy realtek hostapd configuration.")
 
 
-askforextras() or die("Unable to install extras. Can be ignored if you didn't want KA-Lite or KiwiX")
+install_kalite() or die("Unable to install extras. Can be ignored if you didn't want KA-Lite or KiwiX")
+if check_arguments():
+	install_kiwix()
 print "RACHEL has been successfully installed. It can be accessed at: http://10.10.10.10/"

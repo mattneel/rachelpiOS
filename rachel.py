@@ -11,7 +11,13 @@ def exists(p):
 	return os.path.isfile(p) or os.path.isdir(p)
 
 def check_arguments():
-	return
+	parser = argparse.ArgumentParser()
+	
+	parser.add_argument('-x', '--kiwix', default = False)
+	args = parser.parse_args()
+	if not args.kiwix
+		return False
+	return True
 
 def cmd(c):
 	new_env = os.environ.copy()
@@ -38,4 +44,7 @@ sudo("git clone --depth 1 https://github.com/mattneel/rachelpios.git /tmp/rachel
 
 # Run the script
 os.chdir("/tmp/rachel_installer")
-sudo("python installer.py") or die("Installation failed.")
+if check_arguments():
+	sudo("python installer.py --kiwix") or die("Installation (+KiwiX) failed.")
+else:
+	sudo("python installer.py") or die("Installation failed.")
