@@ -16,13 +16,9 @@ def install_kiwix():
 	return
 
 def check_arguments():
-	parser = argparse.ArgumentParser()
-	
-	parser.add_argument('-x', '--kiwix', default = False)
-	args = parser.parse_args()
-	if not args.kiwix:
-		return False
-	return True
+	kalite = raw_input("Would you like to install KA-Lite? [Y/n]: ").lower() or "y"
+	kiwix = raw_input("Would you like to install KiwiX? [y/N]: ").lower or "n"
+	return [kalite, kiwix]
 
 def exists(p):
 	return os.path.isfile(p) or os.path.isdir(p)
@@ -135,8 +131,14 @@ if wifi_present():
 	cp("files/hostapd_RTL8188CUS", "/etc/hostapd/hostapd.conf.RTL8188CUS") or die("Unable to copy RTL8188CUS hostapd configuration.")
 	cp("files/hostapd_realtek.conf", "/etc/hostapd/hostapd.conf.realtek") or die("Unable to copy realtek hostapd configuration.")
 
+if not is_vagrant():
+	[kalite, kiwix] = check_arguments()
+	if kalite == "y":
+		install_kalite() or die("Unable to install KA-Lite.")
+	if kiwix == "y":
+		install_kiwix() or die("Unable to install KiwiX.")
+else:
+	install_kalite() or die("Unable to install KA-Lite.")
+	install_kiwix() or die("Unable to install KiwiX.")
 
-install_kalite() or die("Unable to install extras. Can be ignored if you didn't want KA-Lite or KiwiX")
-if check_arguments():
-	install_kiwix()
 print "RACHEL has been successfully installed. It can be accessed at: http://10.10.10.10/"
