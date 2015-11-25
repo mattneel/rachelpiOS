@@ -17,7 +17,7 @@ def askforextras():
 	extra = raw_input("Install KiwiX, KA-Lite, Both, or Neither? [Both]: ").lower() or "both"
 	if extra == "both":
 		install_kalite()
-		install kiwix()
+		install_kiwix()
 	else if extra == "kiwix":
 		install_kiwix()
 	else if extra == "ka-lite":
