@@ -2,11 +2,25 @@
 
 import sys
 import os
-import argparse
 import subprocess
 import shutil
 
-def check_arguments():
+def install_kalite():
+	sudo("add-apt-repository -y ppa:learningequality/ka-lite") or die("Unable to add the KA-Lite repository.")
+	sudo("apt-get update -y") or die("Unable to update apt repository cache.")
+	sudo("apt-get install ka-lite -y") or die("Unable to install ka-lite package.")
+
+def askforextras():
+	extra = raw_input("Install KiwiX, KA-Lite, Both, or Neither? [Both]: ").lower() or "both"
+	if extra == "both":
+		install_kalite()
+		install kiwix()
+	else if extra == "kiwix":
+		install_kiwix()
+	else if extra == "ka-lite":
+		install_kalite()
+	else if extra == "neither":
+		return
 	return
 
 def exists(p):
@@ -114,4 +128,6 @@ if wifi_present():
 	cp("files/hostapd_RTL8188CUS", "/etc/hostapd/hostapd.conf.RTL8188CUS") or die("Unable to copy RTL8188CUS hostapd configuration.")
 	cp("files/hostapd_realtek.conf", "/etc/hostapd/hostapd.conf.realtek") or die("Unable to copy realtek hostapd configuration.")
 
+
+askforextras() or die("Unable to install extras. Can be ignored if you didn't want KA-Lite or KiwiX")
 print "RACHEL has been successfully installed. It can be accessed at: http://10.10.10.10/"
